@@ -17,12 +17,25 @@ local websocket = require("gamesense/websockets")
 local vector = require("vector")
 local c_entity = require('gamesense/entity')
 local json = require("json")
+
+
+local ffi = require 'ffi' or error("[BLASSED ERROR!] Script cloud not be loaded correctly! Error code: FFI-X . Contact @xonegovno on telegram if problem stays.")
+ffi.cdef[[
+typedef void*** interface_ptr;
+typedef void* (__thiscall* get_client_entity_t)(void*, int);
+]]
+
 ------@libs
 
 client.exec("Clear")
-print("Welcome Back! Blassed User!")
-print("                                                         WARNING!!!")
-print("All functions will work on the first round! No need to ask and say that aspect ratio and other visual parts don't work for you in spectators!")
+print("                                                   HAPPY NEW 2026 YEAR!!!!!!")
+print(" ")
+print(" ")
+print(" ")
+
+print("                                                 Welcome Back! Blassed User!")
+print("                                                         build:1.7 !!!")
+
 
 local lua_name = "blassed-yaw"
 label22 = ui.new_label("AA", "Anti-aimbot angles", "\a9ECA2AFF~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
@@ -1662,7 +1675,7 @@ autostrafe = ui.reference("Misc", "Movement", "Air strafe"),
 
             -- Информация о версии
             build = lua_group:label("Version: \v1.7 " .. build),
-            last_upd = lua_group:label("Build: \v27.11.2025"),
+            last_upd = lua_group:label("Build: \v06.12.2025"),
 
             -- Информация о Соц.Сетях
             discord_link = lua_group:button("Join Us: \vDiscord channel", function() SteamOverlayAPI.OpenExternalBrowserURL("https://raw.githubusercontent.com/kubiszxc/soon/refs/heads/main/soon.txt") end),
@@ -1909,6 +1922,7 @@ end)
     lua_menu.misc.spammers:depend(misc_tab)
     lua_menu.misc.spammers2:depend(misc_tab, {lua_menu.misc.spammers, true})
     lua_menu.misc.clantag2:depend(misc_tab)
+    lua_menu.misc.warmup_settings:depend(misc_tab)
     -- lua_menu.misc.Backtrack2:depend(ragebot_tab) -- Backtrack2 не определен в меню
     
     -- Model Changer dependencies
@@ -3354,7 +3368,7 @@ end
             local pitch_e = Pitch > -30 and Pitch < 49
             local curr_side = globals.tickcount() % 4 > 1 and 1 or - 1
 
-            if lua_menu.misc.resolver_type:get() == "Safe" then
+            if lua_menu.misc.resolver_type:get() == "Default" then
                 local should_correct = (simtime - prev_simtime >= 1) and math.abs(max_desync) < 60 and expres.body_yaw[current_threat][prev_simtime] ~= 0
                 if should_correct then
                     local value = math.random(0, expres.body_yaw[current_threat][prev_simtime] * math.random(-1, 1)) * .25
@@ -3363,7 +3377,7 @@ end
                 else
                     plist.set(current_threat, 'Force body yaw', false)  
                 end
-            elseif lua_menu.misc.resolver_type:get() == "New Method" then
+            elseif lua_menu.misc.resolver_type:get() == "Defensive" then
                 if pitch_e then
                     value_body = 0
                 else
@@ -4249,6 +4263,6 @@ end
 client.delay_call(0.001, auto_change_aa_icon)
 
 
-            label555 = ui.new_label("aa", "Other", "Developer: \a9FCA2BFF kubisshvh and cursor AI")
+            label555 = ui.new_label("aa", "Other", "Developer: \a9FCA2BFF kubisshvh")
                         label252 = ui.new_label("AA", "Anti-aimbot angles", "\a9ECA2AFF~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         
